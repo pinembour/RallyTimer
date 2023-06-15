@@ -9,9 +9,9 @@ This configuration in particularly useful in rally racing, where a team is given
 - Create/update/modify/delete timers
 - Display individual timers
 - Automatically reload client when a timer is updated
+- Display all the timers on the same page
 
 ## To implement
-- Display all the timers on the same page
 - Make it nice looking
 
 ## Usage
