@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block scripts %}
+    <script src="{% static 'main.js' %}" defer></script>
+{% endblock scripts %}
 
 {% block content %}
     {% for obj in object_list %}
@@ -6,14 +11,14 @@
         <div class="row">
             <div class="row">
                 <div class="col"> Service for {{obj.name}} will take place on </div> 
-                <div class="col" id="timer-date-box">{{obj.when|date:"M d, Y H:i:s"}}</div>
+                <div class="col" id="timer-date-box-{{obj.name}}">{{obj.when|date:"M d, Y H:i:s"}}</div>
             </div>
             <div class="row">
                 <div class="col"> and will last</div>
-                <div class="col" id="timer-duration-box">{{obj.duration|time:"H:i"}}</div>
+                <div class="col" id="timer-duration-box-{{obj.name}}">{{obj.duration|time:"H:i"}}</div>
             </div>
             <div> Time left:</div>
-            <div id="timeleft" class="text-center mt-3 h1">
+            <div id="timeleft-{{obj.name}}" class="text-center mt-3 h1">
                 <div class="spinner-border" role="status"></div>
             </div>
         </div>

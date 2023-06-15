@@ -1,13 +1,5 @@
 console.log('Hello world')
 
-const timerDateBox = document.getElementById('timer-date-box')
-const timerDurationBox = document.getElementById('timer-duration-box')
-const countdownBox = document.getElementById('timeleft')
-
-const timerDate = Date.parse(timerDateBox.textContent)
-const timerDurationSplit = timerDurationBox.textContent.split(':')
-const timerDuration = (+timerDurationSplit[0] * 60 * 60 * 1000) + (+timerDurationSplit[1] * 60 * 1000) + ((+timerDurationSplit[2] * 1000) || 0)
-
 const socket = new WebSocket('ws://127.0.0.1:8000/ws/admin_changes/');
 socket.onmessage = function (event) {
     console.log('Recieved message: ' + event.data);
@@ -23,24 +15,39 @@ socket.onerror = function(error) {
     console.error('Socket error: ' + error);
 };
 
-const myCountdown = setInterval(() => {
-    const now = new Date().getTime()
+// Get all elements whose IDs match the pattern 'timer-date-box-X'
+const timerDateBoxes = document.querySelectorAll('[id^="timer-date-box-"]')
 
-    const diff = timerDate - now + timerDuration
+// Iterate over the timer date boxes
+timerDateBoxes.forEach(timerDateBox => {
+const suffix = timerDateBox.id.split('-')[3] // Extract the suffix from the ID
 
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+    const timerDurationBox = document.getElementById(`timer-duration-box-${suffix}`)
+    const countdownBox = document.getElementById(`timeleft-${suffix}`)
 
-    if (diff > -30*1000*60) {
-        if (diff < 0) {
-            countdownBox.style.color = 'red'
-            countdownBox.innerHTML = Math.abs(hours+1) + 'h ' + Math.abs(minutes+1) + 'm ' + Math.abs(seconds+1) + 's '
+    const timerDate = Date.parse(timerDateBox.textContent)
+    const timerDurationSplit = timerDurationBox.textContent.split(':')
+    const timerDuration = (+timerDurationSplit[0] * 60 * 60 * 1000) + (+timerDurationSplit[1] * 60 * 1000) + ((+timerDurationSplit[2] * 1000) || 0)
+
+    const myCountdown = setInterval(() => {
+        const now = new Date().getTime()
+
+        const diff = timerDate - now + timerDuration
+
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+
+        if (diff > -30*1000*60) {
+            if (diff < 0) {
+                countdownBox.style.color = 'red'
+                countdownBox.innerHTML = Math.abs(hours+1) + 'h ' + Math.abs(minutes+1) + 'm ' + Math.abs(seconds+1) + 's '
+            } else {
+                countdownBox.innerHTML = hours + 'h ' + minutes + 'm ' + seconds + 's '
+            }
         } else {
-            countdownBox.innerHTML = hours + 'h ' + minutes + 'm ' + seconds + 's '
+            clearInterval(myCountdown)
+            countdownBox.innerHTML = 'Service compleed'
         }
-    } else {
-        clearInterval(myCountdown)
-        countdownBox.innerHTML = 'Service compleed'
-    }
-}, 1000)
+    }, 1000)
+})
