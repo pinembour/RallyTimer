@@ -8,8 +8,19 @@ This configuration in particularly useful in rally racing, where a team is given
 ## Implemented
 - Create/update/modify/delete timers
 - Display individual timers
+- Automatically reload client when a timer is updated
 
 ## To implement
 - Display all the timers on the same page
-- Automatically reload client when a timer is updated
 - Make it nice looking
+
+## Usage
+
+```bash
+git clone https://github.com/pinembour/RallyTimer.git
+cd RallyTimer
+virtualenv env
+source env/bin/activate
+pip install -r requirements.txt
+python manage.py runserver
+```
