@@ -1,6 +1,4 @@
-console.log('Hello world')
-
-const socket = new WebSocket('ws://127.0.0.1:8000/ws/admin_changes/');
+const socket = new WebSocket('ws://'+ location.host + '/ws/admin_changes/');
 socket.onmessage = function (event) {
     console.log('Recieved message: ' + event.data);
     location.reload();
@@ -47,7 +45,7 @@ const suffix = timerDateBox.id.split('-')[3] // Extract the suffix from the ID
             }
         } else {
             clearInterval(myCountdown)
-            countdownBox.innerHTML = 'Service compleed'
+            countdownBox.innerHTML = 'Service completed'
         }
     }, 1000)
 })
