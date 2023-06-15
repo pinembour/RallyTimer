@@ -7,6 +7,22 @@ const countdownBox = document.getElementById('timeleft')
 const timerDate = Date.parse(timerDateBox.textContent)
 const timerDurationSplit = timerDurationBox.textContent.split(':')
 const timerDuration = (+timerDurationSplit[0] * 60 * 60 * 1000) + (+timerDurationSplit[1] * 60 * 1000) + ((+timerDurationSplit[2] * 1000) || 0)
+
+const socket = new WebSocket('ws://127.0.0.1:8000/ws/admin_changes/');
+socket.onmessage = function (event) {
+    console.log('Recieved message: ' + event.data);
+    location.reload();
+};
+socket.onclose = function(event) {
+    // Handle socket closure here
+    console.log('Socket closed with code: ' + event.code);
+};
+
+socket.onerror = function(error) {
+    // Handle any errors here
+    console.error('Socket error: ' + error);
+};
+
 const myCountdown = setInterval(() => {
     const now = new Date().getTime()
 
