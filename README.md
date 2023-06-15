@@ -22,5 +22,5 @@ cd RallyTimer
 virtualenv env
 source env/bin/activate
 pip install -r requirements.txt
-python manage.py runserver
+python3 manage.py runserver
 ```
