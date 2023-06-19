@@ -22,6 +22,7 @@ const suffix = timerDateBox.id.split('-')[3] // Extract the suffix from the ID
 
     const timerDurationBox = document.getElementById(`timer-duration-box-${suffix}`)
     const countdownBox = document.getElementById(`timeleft-${suffix}`)
+    const localtimeBox = document.getElementById(`local-time-${suffix}`)
 
     const timerDate = Date.parse(timerDateBox.textContent)
     const timerDurationSplit = timerDurationBox.textContent.split(':')
@@ -32,6 +33,7 @@ const suffix = timerDateBox.id.split('-')[3] // Extract the suffix from the ID
 
         const diff = timerDate - now + timerDuration
 
+        const localtime = new Date(now).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
         const timerDurationHours = Math.floor(timerDuration / (1000 * 60 * 60))
         const timerDurationMinutes = Math.floor((timerDuration % (1000 * 60 * 60)) / (1000 * 60))
         const timerDurationSeconds = Math.floor((timerDuration % (1000 * 60)) / 1000)
@@ -39,6 +41,8 @@ const suffix = timerDateBox.id.split('-')[3] // Extract the suffix from the ID
         const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
         const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+
+        localtimeBox.innerHTML = localtime
 
         if (diff > -30*1000*60) {
             if (diff <= 0) {
