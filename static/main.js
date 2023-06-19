@@ -54,7 +54,6 @@ const suffix = timerDateBox.id.split('-')[3] // Extract the suffix from the ID
                 countdownBox.innerHTML = hours.toString().padStart(2,'0') + ':' + minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0')
             }
         } else {
-            clearInterval(myCountdown)
             countdownBox.innerHTML = 'Service completed'
         }
     }, 1000)
