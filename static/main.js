@@ -13,8 +13,18 @@ socket.onerror = function(error) {
     console.error('Socket error: ' + error);
 };
 
+const getTimezoneOffset = (timeZone, date = new Date()) => {
+  const tz = date.toLocaleString("en", {timeZone, timeStyle: "long"}).split(" ").slice(-1)[0];
+  const dateString = date.toString();
+  const offset = Date.parse(`${dateString} UTC`) - Date.parse(`${dateString} ${tz}`);
+  
+  // return UTC offset in millis
+  return offset;
+}
+
 // Get all elements whose IDs match the pattern 'timer-date-box-X'
 const timerDateBoxes = document.querySelectorAll('[id^="timer-date-box-"]')
+const offset = getTimezoneOffset(serverTimezone)
 
 // Iterate over the timer date boxes
 timerDateBoxes.forEach(timerDateBox => {
@@ -31,9 +41,9 @@ const suffix = timerDateBox.id.split('-')[3] // Extract the suffix from the ID
     const myCountdown = setInterval(() => {
         const now = new Date().getTime()
 
-        const diff = timerDate - now + timerDuration
+        var formattedTime = new Intl.DateTimeFormat('en-US', { hour: 'numeric', hour12: false, minute:'numeric', second: 'numeric', timeZone: serverTimezone }).format(now)
+        const diff = timerDate - now + timerDuration - offset
 
-        const localtime = new Date(now).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
         const timerDurationHours = Math.floor(timerDuration / (1000 * 60 * 60))
         const timerDurationMinutes = Math.floor((timerDuration % (1000 * 60 * 60)) / (1000 * 60))
         const timerDurationSeconds = Math.floor((timerDuration % (1000 * 60)) / 1000)
@@ -42,7 +52,7 @@ const suffix = timerDateBox.id.split('-')[3] // Extract the suffix from the ID
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
         const seconds = Math.floor((diff % (1000 * 60)) / 1000)
 
-        localtimeBox.innerHTML = localtime
+        localtimeBox.innerHTML = formattedTime
 
         if (diff > -30*1000*60) {
             if (diff <= 0) {
