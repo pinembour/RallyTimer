@@ -12,12 +12,14 @@ This configuration in particularly useful in rally racing, where a team is given
 - Display all the timers on the same page
 - Before timer starts, timer should display service duration
 - Display local time
+- Handle timezones
 
 ## To implement
 - Make it nice looking
 - Timer model needs picture
 - Show picture of timer model in frontend
-- Handle timezones
+- Custom time before clock turns red 
+- Clock always turns yellow when counter reaches 5 minutes
 
 ## Usage
 
