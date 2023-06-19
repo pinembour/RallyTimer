@@ -10,9 +10,14 @@ This configuration in particularly useful in rally racing, where a team is given
 - Display individual timers
 - Automatically reload client when a timer is updated
 - Display all the timers on the same page
+- Before timer starts, timer should display service duration
 
 ## To implement
 - Make it nice looking
+- Display local time
+- Timer model needs picture
+- Show picture of timer model in frontend
+- Handle timezones
 
 ## Usage
 
