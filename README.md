@@ -15,10 +15,10 @@ This configuration in particularly useful in rally racing, where a team is given
 - Handle timezones
 - Timer model needs picture
 - Show picture of timer model in frontend
+- Custom time before clock turns red 
 
 ## To implement
 - Make it nice looking
-- Custom time before clock turns red 
 - Clock always turns yellow when counter reaches 5 minutes
 
 ## Usage
