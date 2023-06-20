@@ -22,6 +22,7 @@
                     <h5 class="card-title"> Next Service </h5> 
                     <h3 class="card-text">{{object.when|date:"H:i:s"}}</h3>
                     <div id="timer-date-box-{{object.name}}" style="display: none">{{object.when|date:"M d, Y H:i:s"}}</div>
+                    <div id="time-to-red-{{object.name}}" style="display: none">{{object.time_to_red|time:"i:s"}}</div>
                 </div>
             </div>
         </div>

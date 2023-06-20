@@ -33,8 +33,11 @@ const suffix = timerDateBox.id.split('-')[3] // Extract the suffix from the ID
     const timerDurationBox = document.getElementById(`timer-duration-box-${suffix}`)
     const countdownBox = document.getElementById(`timeleft-${suffix}`)
     const localtimeBox = document.getElementById(`local-time-${suffix}`)
+    const timeToRedBox = document.getElementById(`time-to-red-${suffix}`)
 
     const timerDate = Date.parse(timerDateBox.textContent)
+    const timeToRedSplit = timeToRedBox.textContent.split(':')
+    const timeToRed = (+timeToRedSplit[0] * 60 * 1000) + ((+timeToRedSplit[1] * 1000) || 0)
     const timerDurationSplit = timerDurationBox.textContent.split(':')
     const timerDuration = (+timerDurationSplit[0] * 60 * 60 * 1000) + (+timerDurationSplit[1] * 60 * 1000) + ((+timerDurationSplit[2] * 1000) || 0)
 
@@ -55,9 +58,12 @@ const suffix = timerDateBox.id.split('-')[3] // Extract the suffix from the ID
         localtimeBox.innerHTML = formattedTime
 
         if (diff > -30*1000*60) {
-            if (diff <= 0) {
+            if (diff <= timeToRed) {
                 countdownBox.style.color = 'red'
-                countdownBox.innerHTML = Math.abs(hours+1).toString().padStart(2,'0') + ':' + Math.abs(minutes+1).toString().padStart(2,'0') + ':' + Math.abs(seconds+1).toString().padStart(2,'0')
+                countdownBox.innerHTML = hours.toString().padStart(2,'0') + ':' + minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0')
+                if ( diff <= 0 ) {
+                    countdownBox.innerHTML = Math.abs(hours+1).toString().padStart(2,'0') + ':' + Math.abs(minutes+1).toString().padStart(2,'0') + ':' + Math.abs(seconds+1).toString().padStart(2,'0')
+                }
             } else if (diff > timerDuration){
                 countdownBox.innerHTML = timerDurationHours.toString().padStart(2,'0') + ':' + timerDurationMinutes.toString().padStart(2,'0') + ':' + timerDurationSeconds.toString().padStart(2,'0')
             } else {

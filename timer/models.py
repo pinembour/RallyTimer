@@ -11,6 +11,7 @@ class Timer(models.Model):
     duration = models.TimeField()
     when = models.DateTimeField()
     flag = models.ImageField(upload_to='flag', default='white.png')
+    time_to_red = models.TimeField(default="00:00")
     def __str__(self):
         return str(self.name)
 
