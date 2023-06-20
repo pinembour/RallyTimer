@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
+import datetime
 
 # Create your models here.
 
@@ -11,7 +12,7 @@ class Timer(models.Model):
     duration = models.TimeField()
     when = models.DateTimeField()
     flag = models.ImageField(upload_to='flag', default='white.png')
-    time_to_red = models.TimeField(default="00:00")
+    time_to_red = models.TimeField(default=datetime.time(00,00))
     def __str__(self):
         return str(self.name)
 
