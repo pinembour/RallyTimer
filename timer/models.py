@@ -6,9 +6,11 @@ from asgiref.sync import async_to_sync
 # Create your models here.
 
 class Timer(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=4)
+    full_name = models.CharField(max_length=50, default="")
     duration = models.TimeField()
     when = models.DateTimeField()
+    flag = models.ImageField(upload_to='flag', default='white.png')
     def __str__(self):
         return str(self.name)
 
