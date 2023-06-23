@@ -6,11 +6,12 @@
 {% endblock scripts %}
 
 {% block content %}
-    <div class="row justify-content-evenly">
-        <div class="col-4">
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-auto">
             <img src="/media/{{object.flag}}" width="100" />
         </div>
-        <div class="col-4">
+        <div class="col-auto">
             <h1> {{object.full_name}} </h1>
         </div>
     </div> 
@@ -32,7 +33,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"> Local Time </h5> 
-                    <h3 class="card-text" id="local-time-{{object.name}}"></h3>
+                    <h3 class="card-text" id="local-time"></h3>
                     <div id="timer-duration-box-{{object.name}}" style="display: none">{{object.duration|time:"H:i"}}</div>
                 </div>
             </div>
@@ -41,10 +42,10 @@
     <br>
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Time left</h5>
-            <div id="timeleft-{{object.name}}" class="text-center mt-3 h1">
-                <div class="spinner-border" role="status"></div>
+            <div id="timeleft-{{object.name}}" class="text-center h1 mt-3">
+                <div class="spinner-border h5" role="status"></div>
             </div>
         </div>
     </div>
+    <br>
 {% endblock content %}

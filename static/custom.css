@@ -1,0 +1,10 @@
+.nav .nav-link.active {
+  background-color: transparent;
+  border: none;
+  color: black;
+  border-bottom: 2px solid #e53012
+}
+
+.nav .nav-link:not(.active) {
+  color: grey;
+}

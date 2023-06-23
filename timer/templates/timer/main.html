@@ -6,23 +6,35 @@
 {% endblock scripts %}
 
 {% block content %}
+    <div class="row mb-0 pb-0 justify-content-center">
+        <div class="col-auto mb-0 pb-0"> Local Time </div>
+        <h5 class="col-auto mb-0 pb-0" id="local-time"></h3>
+    </div>
+    <hr> 
     {% for obj in object_list %}
-        <a href="{{ obj.get_absolute_url }}">{{ obj.name }}</a>
-        <div class="row">
-            <div class="row">
-                <div class="col"> Service for {{obj.name}} will take place on </div> 
-                <div class="col" id="timer-date-box-{{obj.name}}">{{obj.when|date:"M d, Y H:i:s"}}</div>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <img src="/media/{{obj.flag}}" width="100" />
             </div>
-            <div class="row">
-                <div class="col"> and will last</div>
-                <div class="col" id="timer-duration-box-{{obj.name}}">{{obj.duration|time:"H:i"}}</div>
+            <div class="col-4">
+                <h1>{{ obj.full_name }}</h1>
+                <div class="row">
+                    <div class="row">
+                        <div class="col-auto">
+                            <div> Next Service </div>
+                            <h3>{{obj.when|date:"H:i:s"}}</h3>
+                        </div>
+                        <div class="col" style="display: none" id="timer-duration-box-{{obj.name}}">{{obj.duration|time:"H:i"}}</div>
+                        <div id="time-to-red-{{obj.name}}" style="display: none">{{obj.time_to_red|time:"i:s"}}</div>
+                        <div class="col" style="display: none" id="timer-date-box-{{obj.name}}">{{obj.when|date:"M d, Y H:i:s"}}</div>
+                   </div>
+                </div>
             </div>
-            <div> Time left:</div>
-            <div id="timeleft-{{obj.name}}" class="text-center mt-3 h1">
-                <div class="spinner-border" role="status"></div>
+            <div id="timeleft-{{obj.name}}" class="col-5 text-center h1 mt-3">
+                <div class="spinner-border h5" role="status"></div>
             </div>
         </div>
-       <hr> 
+        <hr> 
     {% endfor %}
 {% endblock %}
 ```

@@ -32,7 +32,7 @@ const suffix = timerDateBox.id.split('-')[3] // Extract the suffix from the ID
 
     const timerDurationBox = document.getElementById(`timer-duration-box-${suffix}`)
     const countdownBox = document.getElementById(`timeleft-${suffix}`)
-    const localtimeBox = document.getElementById(`local-time-${suffix}`)
+    const localtimeBox = document.getElementById(`local-time`)
     const timeToRedBox = document.getElementById(`time-to-red-${suffix}`)
 
     const timerDate = Date.parse(timerDateBox.textContent)
