@@ -16,9 +16,9 @@ This configuration in particularly useful in rally racing, where a team is given
 - Timer model needs picture
 - Show picture of timer model in frontend
 - Custom time before clock turns red 
+- Make it nice looking
 
 ## To implement
-- Make it nice looking
 - Clock always turns yellow when counter reaches 5 minutes
 
 ## Usage
@@ -29,5 +29,7 @@ cd RallyTimer
 virtualenv env
 source env/bin/activate
 pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate
 python manage.py runserver
 ```
