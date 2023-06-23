@@ -61,7 +61,7 @@ const suffix = timerDateBox.id.split('-')[3] // Extract the suffix from the ID
                 countdownBox.style.color = 'red'
                 countdownBox.innerHTML = hours.toString().padStart(2,'0') + ':' + minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0')
                 if ( diff <= 0 ) {
-                    countdownBox.innerHTML = Math.abs(hours+1).toString().padStart(2,'0') + ':' + Math.abs(minutes+1).toString().padStart(2,'0') + ':' + Math.abs(seconds+1).toString().padStart(2,'0')
+                    countdownBox.innerHTML = '-' + Math.abs(hours+1).toString().padStart(2,'0') + ':' + Math.abs(minutes+1).toString().padStart(2,'0') + ':' + Math.abs(seconds+1).toString().padStart(2,'0')
                 }
             } else if (diff > timerDuration){
                 countdownBox.innerHTML = timerDurationHours.toString().padStart(2,'0') + ':' + timerDurationMinutes.toString().padStart(2,'0') + ':' + timerDurationSeconds.toString().padStart(2,'0')
