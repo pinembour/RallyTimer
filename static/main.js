@@ -45,8 +45,7 @@ const suffix = timerDateBox.id.split('-')[3] // Extract the suffix from the ID
         const now = new Date().getTime()
 
         var formattedTime = new Intl.DateTimeFormat('en-US', { hour: 'numeric', hour12: false, minute:'numeric', second: 'numeric', timeZone: serverTimezone }).format(now)
-        const diff = timerDate - now + timerDuration - offset
-
+        const diff = timerDate - now + timerDuration
         const timerDurationHours = Math.floor(timerDuration / (1000 * 60 * 60))
         const timerDurationMinutes = Math.floor((timerDuration % (1000 * 60 * 60)) / (1000 * 60))
         const timerDurationSeconds = Math.floor((timerDuration % (1000 * 60)) / 1000)
