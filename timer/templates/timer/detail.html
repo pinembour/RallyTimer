@@ -9,15 +9,15 @@
     <br>
     <div class="row justify-content-center">
         <div class="col-auto">
-            <img src="/media/{{object.flag}}" width="100" />
+            <img src="/media/{{object.flag}}" width="120" />
         </div>
-        <div class="col-auto">
-            <h1> {{object.full_name}} </h1>
+        <div class="col-auto h1 align-self-center">
+            {{object.full_name}}
         </div>
     </div> 
     <br>
     <div class="row">
-        <div class="col">
+        <div class="col-3">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"> Next Service </h5> 
@@ -27,9 +27,9 @@
                 </div>
             </div>
         </div>
-        <div class="col" width="col-15">
-        </div>
         <div class="col">
+        </div>
+        <div class="col-3">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"> Local Time </h5> 
@@ -41,8 +41,8 @@
     </div>
     <br>
     <div class="card">
-        <div class="card-body">
-            <div id="timeleft-{{object.name}}" class="text-center h1 mt-3">
+        <div class="card-body p-0 row justify-content-center">
+            <div id="timeleft-{{object.name}}" style="min-width: 53%" class="col-auto h0 mt-0">
                 <div class="spinner-border h5" role="status"></div>
             </div>
         </div>
