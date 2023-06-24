@@ -17,6 +17,7 @@ This configuration in particularly useful in rally racing, where a team is given
 - Show picture of timer model in frontend
 - Custom time before clock turns red 
 - Make it nice looking
+- Ability to pause timer for Super Rally
 
 ## To implement
 - Clock always turns yellow when counter reaches 5 minutes
