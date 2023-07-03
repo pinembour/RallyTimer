@@ -24,6 +24,8 @@ This configuration in particularly useful in rally racing, where a team is given
 
 ## Usage
 
+This project has been built with Python 3.11. It probably works with older versions of Python 3, but it has not been tested.
+
 ```bash
 git clone https://github.com/pinembour/RallyTimer.git
 cd RallyTimer
