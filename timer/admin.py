@@ -6,6 +6,7 @@ from .models import Timer
 # Register your models here.
 
 class TimerAdmin(DjangoObjectActions, admin.ModelAdmin):
+    #Add pause button to each timer. Pause button will change the duration to the time remaining and set the timer start time to 1 day ago.
     @takes_instance_or_queryset
     def pause(self, request, queryset):
         for obj in queryset:

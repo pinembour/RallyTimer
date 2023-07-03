@@ -7,12 +7,12 @@ import datetime
 # Create your models here.
 
 class Timer(models.Model):
-    name = models.CharField(max_length=4)
-    full_name = models.CharField(max_length=50, default="")
-    duration = models.TimeField()
-    when = models.DateTimeField()
-    flag = models.ImageField(upload_to='flag', default='white.png')
-    time_to_red = models.TimeField(default=datetime.time(00,00))
+    name = models.CharField(max_length=4) # Short name, used for URLs and in the navbar
+    full_name = models.CharField(max_length=50, default="") # Full name, displayed on the timer pages
+    duration = models.TimeField() # Length of the timer
+    when = models.DateTimeField() # When the timer will start
+    flag = models.ImageField(upload_to='flag', default='white.png') # Flag to display next to the driver name
+    time_to_red = models.TimeField(default=datetime.time(00,00)) # Time to change the countdown text color to red
     def __str__(self):
         return str(self.name)
 
@@ -22,10 +22,10 @@ class Timer(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
     
-        # Send notification to clients
+        # When saving a Timer, send a WS message to all clients.
         channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(
-            "admin_changes",  # Group name
+            "admin_changes",
             {
                 "type": "admin_change_notification",
                 "message": "A change was made in the admin.",
