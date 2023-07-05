@@ -29,7 +29,7 @@ This project has been built with Python 3.11. It probably works with older versi
 ```bash
 git clone https://github.com/pinembour/RallyTimer.git
 cd RallyTimer
-virtualenv env
+python -m venv env
 source env/bin/activate
 pip install -r requirements.txt
 python manage.py makemigrations
