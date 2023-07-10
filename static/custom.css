@@ -28,14 +28,14 @@ h3 {
 .h0 {
   font-size: 8rem;
 }
-@font-face { font-family: "HyundaiSansHead-Regular"; src: url("HyundaiSansHead-Regular.eot"); src: url("HyundaiSansHead-Regular.eot?#iefix") format("embedded-opentype"), url("HyundaiSansHead-Regular.woff2") format("woff2"), url("HyundaiSansHead-Regular.woff") format("woff"), url("HyundaiSansHead-Regular.ttf") format("truetype"); font-weight: normal; font-style: normal; }
+@font-face { font-family: "HyundaiSansHead-Regular"; src: url("priv/HyundaiSansHead-Regular.eot"); src: url("priv/HyundaiSansHead-Regular.eot?#iefix") format("embedded-opentype"), url("priv/HyundaiSansHead-Regular.woff2") format("woff2"), url("priv/HyundaiSansHead-Regular.woff") format("woff"), url("priv/HyundaiSansHead-Regular.ttf") format("truetype"); font-weight: normal; font-style: normal; }
 
 h1 { font-family: "HyundaiSansHead-Regular", Verdana, sans-serif; font-size: xx-large;} 
 
-@font-face { font-family: "HyundaiSansHead-Light"; src: url("HyundaiSansHead-Light.eot"); src: url("HyundaiSansHead-Light.eot?#iefix") format("embedded-opentype"), url("HyundaiSansHead-Light.woff2") format("woff2"), url("HyundaiSansHead-Light.woff") format("woff"), url("HyundaiSansHead-Light.ttf") format("truetype"); font-weight: normal; font-style: normal; }
+@font-face { font-family: "HyundaiSansHead-Light"; src: url("priv/HyundaiSansHead-Light.eot"); src: url("priv/HyundaiSansHead-Light.eot?#iefix") format("embedded-opentype"), url("priv/HyundaiSansHead-Light.woff2") format("woff2"), url("priv/HyundaiSansHead-Light.woff") format("woff"), url("priv/HyundaiSansHead-Light.ttf") format("truetype"); font-weight: normal; font-style: normal; }
 
 h3 { font-family: "HyundaiSansHead-Light", Verdana, sans-serif; }
 
-@font-face { font-family: "HyundaiSansText-Regular"; src: url("HyundaiSansText-Regular.eot"); src: url("HyundaiSansText-Regular.eot?#iefix") format("embedded-opentype"), url("HyundaiSansText-Regular.woff2") format("woff2"), url("HyundaiSansText-Regular.woff") format("woff"), url("HyundaiSansText-Regular.ttf") format("truetype"); font-weight: normal; font-style: normal; }
+@font-face { font-family: "HyundaiSansText-Regular"; src: url("priv/HyundaiSansText-Regular.eot"); src: url("priv/HyundaiSansText-Regular.eot?#iefix") format("embedded-opentype"), url("priv/HyundaiSansText-Regular.woff2") format("woff2"), url("priv/HyundaiSansText-Regular.woff") format("woff"), url("priv/HyundaiSansText-Regular.ttf") format("truetype"); font-weight: normal; font-style: normal; }
 
 body { font-family: "HyundaiSansText-Regular", Verdana, sans-serif; } 
