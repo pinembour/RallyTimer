@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-gne=!eq*9u-ja5d)c_h0!9$f+otv7(p6&9=y!%=i4x0ixm!=!('
+SECRET_KEY = 'CHANGE-THIS-@=@jbbuozt!%7byo=7ghx6j^_&-joj#y(89p#wwbjcx^d2f_b7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -122,9 +122,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 MEDIA_URL = "media/"
-MEDIA_ROOT = "/home/pinembour/RallyTimer/media/"
+MEDIA_ROOT = "/code/media/"
+STATIC_ROOT = "/code/static/"
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [ BASE_DIR / 'static']
+# STATICFILES_DIRS = [ BASE_DIR / 'static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
