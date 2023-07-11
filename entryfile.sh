@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cp -rf /static/* /code/static/priv/
+chmod -R 755 /code/static/priv/
 service nginx start
 cp -f /settings/settings.py RallyTimer/settings.py
 TIMEZONE=$(cat /etc/timezone)
