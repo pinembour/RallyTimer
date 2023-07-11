@@ -23,3 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include ('timer.urls', namespace='timer')),
 ]
+
+admin.site.site_header = "RallyTimer Admin"
+admin.site.site_title = "RallyTimer Admin Portal"
+admin.site.index_title = "RallyTimer Admin Portal"
