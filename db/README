@@ -1,0 +1,5 @@
+#DB Folder
+
+This is the folder where the DB will be stored. It has been separated from the main folder to be able to saved to a volume in Docker.
+The folder is tracked via Git so that we don't have to create it manually in deployment.
+The DB is of course not tracked by Git.
