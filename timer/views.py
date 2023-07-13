@@ -1,9 +1,6 @@
-from typing import Any, Dict
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Timer
 from django.utils import timezone
-from django.shortcuts import render
 # Create your views here.
 
 class TimerListView(ListView):
