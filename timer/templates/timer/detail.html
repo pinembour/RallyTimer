@@ -21,9 +21,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"> Next Service </h5> 
-                    <h3 class="card-text">{{object.when|date:"H:i:s"}}</h3>
-                    <div id="timer-date-box-{{object.name}}" style="display: none">{{object.when|date:"c"}}</div>
-                    <div id="time-to-red-{{object.name}}" style="display: none">{{object.time_to_red|time:"i:s"}}</div>
+                    <h3 id="service-box-{{object.name}}"class="card-text">{{object.when|date:"H:i:s"}}</h3>
                 </div>
             </div>
         </div>
@@ -34,7 +32,6 @@
                 <div class="card-body">
                     <h5 class="card-title"> Local Time </h5> 
                     <h3 class="card-text" id="local-time"></h3>
-                    <div id="timer-duration-box-{{object.name}}" style="display: none">{{object.duration|time:"H:i"}}</div>
                 </div>
             </div>
         </div>

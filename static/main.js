@@ -25,26 +25,23 @@ const getTimezoneOffset = (timeZone, date = new Date()) => {
   return offset;
 }
 
-// Get all elements whose IDs match the pattern 'timer-date-box-X'
-const timerDateBoxes = document.querySelectorAll('[id^="timer-date-box-"]')
+// Get all elements whose IDs match the pattern 'service-box-X'
+const serviceBoxes = document.querySelectorAll('[id^="service-box-"]')
 // Get offset from server timezone
 const offset = getTimezoneOffset(serverTimezone)
 
 // Iterate over the timer date boxes
-timerDateBoxes.forEach(timerDateBox => {
-const suffix = timerDateBox.id.split('-')[3] // Extract the suffix from the ID
-
+serviceBoxes.forEach(serviceBox => {
+const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
     // Get the other elements we need to update for this timer from the HTML
-    const timerDurationBox = document.getElementById(`timer-duration-box-${suffix}`)
     const countdownBox = document.getElementById(`timeleft-${suffix}`)
     const localtimeBox = document.getElementById(`local-time`)
-    const timeToRedBox = document.getElementById(`time-to-red-${suffix}`)
-    const timerDate = Date.parse(timerDateBox.textContent)
+    const timerDate = Date.parse(timer_date[suffix])
 
     // Convert time strings to milliseconds
-    const timeToRedSplit = timeToRedBox.textContent.split(':')
+    const timeToRedSplit = time_to_red[suffix].split(':')
     const timeToRed = (+timeToRedSplit[0] * 60 * 1000) + ((+timeToRedSplit[1] * 1000) || 0)
-    const timerDurationSplit = timerDurationBox.textContent.split(':')
+    const timerDurationSplit = timer_duration[suffix].split(':')
     const timerDuration = (+timerDurationSplit[0] * 60 * 60 * 1000) + (+timerDurationSplit[1] * 60 * 1000) + ((+timerDurationSplit[2] * 1000) || 0)
     // Store the timer duration in hours, minutes, seconds
     const timerDurationHours = Math.floor(timerDuration / (1000 * 60 * 60))
