@@ -5,5 +5,5 @@ app_name = 'timer'
 
 urlpatterns = [
     path('', TimerListView.as_view(), name='timer-list'),
-    path('<pk>/', TimerDetailView.as_view(), name='timer-detail'),
+    path('<slug:slug>/', TimerDetailView.as_view(), name='timer-detail'),
 ]

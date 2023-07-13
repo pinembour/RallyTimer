@@ -14,14 +14,18 @@ class TimerListView(ListView):
         context = super().get_context_data(**kwargs)
         server_timezone = timezone.get_current_timezone()
         context['server_timezone'] = server_timezone
+        context['timers'] = Timer.objects.all()
         return context
 
 class TimerDetailView(DetailView):
     model = Timer
     template_name = 'timer/detail.html'
+    slug_url_kwarg = 'slug'
+    slug_field = 'name'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         server_timezone = timezone.get_current_timezone()
         context['server_timezone'] = server_timezone
+        context['timers'] = Timer.objects.all()
         return context

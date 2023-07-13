@@ -32,10 +32,15 @@
                 <img src="{% static 'priv/logo.png' %}" height="50" alt="logo">
             <ul class="nav">
                 <li class="nav-item"><a href="/admin" class="nav-link {% if request.path == '/admin' %}active{% endif %}">ADMIN</a></li>
-                <li class="nav-item"><a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">ALL</a></li>
-                <li class="nav-item"><a href="/1" class="nav-link {% if request.path == '/1/' %}active{% endif %}">CAR A</a></li>
-                <li class="nav-item"><a href="/2" class="nav-link {% if request.path == '/2/' %}active{% endif %}">CAR B</a></li>
-                <li class="nav-item"><a href="/3" class="nav-link {% if request.path == '/3/' %}active{% endif %}">CAR C</a></li>
+                <li class="nav-item">
+                  <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">ALL</a></li>
+                {% for timer in timers %}
+                  {% with '/'|add:timer.name|add:'/' as url %}
+                    <li class="nav-item">
+                      <a href="/{{ timer.name }}" class="nav-link {% if request.path == url %}active{% endif %}">{{ timer.name }}</a>
+                    </li>
+                  {% endwith %}
+                {% endfor %}
             </ul>
         </div>
       </nav>

@@ -7,7 +7,7 @@ import datetime
 # Create your models here.
 
 class Timer(models.Model):
-    name = models.CharField(max_length=4) # Short name, used for URLs and in the navbar
+    name = models.SlugField()
     full_name = models.CharField(max_length=50, default="") # Full name, displayed on the timer pages
     duration = models.TimeField() # Length of the timer
     when = models.DateTimeField() # When the timer will start
@@ -17,7 +17,8 @@ class Timer(models.Model):
         return str(self.name)
 
     def get_absolute_url(self):
-        return reverse('timer:timer-detail', kwargs={'pk': self.pk})
+        return reverse('timer:timer-detail', kwargs={"slug": self.name})
+
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
