@@ -14,6 +14,8 @@ class TimerListView(ListView):
         context = super().get_context_data(**kwargs)
         server_timezone = timezone.get_current_timezone()
         context['server_timezone'] = server_timezone
+        for obj in Timer.objects.all():
+            context['paused' + str(obj.name)] = obj.paused
         context['timers'] = Timer.objects.all()
         return context
 
@@ -27,5 +29,7 @@ class TimerDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         server_timezone = timezone.get_current_timezone()
         context['server_timezone'] = server_timezone
+        for obj in Timer.objects.all():
+            context['paused' + str(obj.name)] = obj.paused
         context['timers'] = Timer.objects.all()
         return context

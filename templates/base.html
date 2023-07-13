@@ -18,6 +18,7 @@
     <!-- Pass timezone to JS -->
     <script>
         const serverTimezone = "{{ server_timezone }}";
+        var paused = {};
         var time_to_red = {};
         var timer_date = {};
         var timer_duration = {};
@@ -25,6 +26,11 @@
             time_to_red["{{ timer.name }}"] = "{{ timer.time_to_red|time:"i:s" }}";
             timer_date["{{ timer.name }}"] = "{{ timer.when|date:"c" }}";
             timer_duration["{{ timer.name }}"] = "{{timer.duration|time:"H:i"}}";
+          {% if timer.paused %}
+            paused["{{ timer.name }}"] = true;
+          {% else %}
+            paused["{{ timer.name }}"] = false;
+          {% endif %}
         {% endfor %}
     </script>
 

@@ -63,6 +63,13 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
         var formattedTime = new Intl.DateTimeFormat('en-US', { hour: 'numeric', hour12: false, minute:'numeric', second: 'numeric', timeZone: serverTimezone }).format(now)
         localtimeBox.innerHTML = formattedTime
 
+        console.log(paused[suffix])
+        if (paused[suffix]) {
+            // Display 'Service paused'
+            countdownBox.innerHTML = 'Service paused'
+        } else {
+        
+
         // If time left is less than 30 minutes
         if (diff > -30*1000*60) {
             // If time left is less than timeToRed
@@ -87,5 +94,6 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
             // Display 'Service completed'
             countdownBox.innerHTML = 'Service completed'
         }
+    }
     }, 1000)
 })
