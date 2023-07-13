@@ -28,6 +28,16 @@
         <div class="col">
         </div>
         <div class="col-auto text-nowrap" style="min-width: 27ch">
+            <div id="remaining-box-{{object.name}}" style="visibility: hidden" class="card" >
+                <div class="card-body">
+                    <h5 class="card-title"> Remining Time </h5> 
+                    <h3 class="card-text">{{object.duration|date:"H:i:s"}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+        </div>
+        <div class="col-auto text-nowrap" style="min-width: 27ch">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"> Local Time </h5> 

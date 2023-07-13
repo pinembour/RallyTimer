@@ -34,6 +34,7 @@ const offset = getTimezoneOffset(serverTimezone)
 serviceBoxes.forEach(serviceBox => {
 const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
     // Get the other elements we need to update for this timer from the HTML
+    const remainingBox = document.getElementById(`remaining-box-${suffix}`)
     const countdownBox = document.getElementById(`timeleft-${suffix}`)
     const localtimeBox = document.getElementById(`local-time`)
     const timerDate = Date.parse(timer_date[suffix])
@@ -63,12 +64,12 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
         var formattedTime = new Intl.DateTimeFormat('en-US', { hour: 'numeric', hour12: false, minute:'numeric', second: 'numeric', timeZone: serverTimezone }).format(now)
         localtimeBox.innerHTML = formattedTime
 
-        console.log(paused[suffix])
         if (paused[suffix]) {
             // Display 'Service paused'
             countdownBox.innerHTML = 'Service paused'
+            remainingBox.style.visibility = 'visible'
         } else {
-        
+        remainingBox.style.visibility = 'hidden'
 
         // If time left is less than 30 minutes
         if (diff > -30*1000*60) {
