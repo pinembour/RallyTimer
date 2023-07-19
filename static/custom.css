@@ -22,7 +22,7 @@
 }
 
 h3 {
-  font-size: 3rem;
+  font-size: 4rem;
 }
 
 .h0 {
@@ -34,7 +34,7 @@ h1 { font-family: "HyundaiSansHead-Regular", Verdana, sans-serif; font-size: xx-
 
 @font-face { font-family: "HyundaiSansHead-Light"; src: url("priv/HyundaiSansHead-Light.eot"); src: url("priv/HyundaiSansHead-Light.eot?#iefix") format("embedded-opentype"), url("priv/HyundaiSansHead-Light.woff2") format("woff2"), url("priv/HyundaiSansHead-Light.woff") format("woff"), url("priv/HyundaiSansHead-Light.ttf") format("truetype"); font-weight: normal; font-style: normal; }
 
-h3 { font-family: "HyundaiSansHead-Light", Verdana, sans-serif; }
+h3 { font-family: "HyundaiSansHead-Regular", Verdana, sans-serif; }
 
 @font-face { font-family: "HyundaiSansText-Regular"; src: url("priv/HyundaiSansText-Regular.eot"); src: url("priv/HyundaiSansText-Regular.eot?#iefix") format("embedded-opentype"), url("priv/HyundaiSansText-Regular.woff2") format("woff2"), url("priv/HyundaiSansText-Regular.woff") format("woff"), url("priv/HyundaiSansText-Regular.ttf") format("truetype"); font-weight: normal; font-style: normal; }
 

@@ -8,7 +8,7 @@
 {% block content %}
     <div class="row mb-0 pb-0 justify-content-center">
         <div class="col-auto mb-0 pb-0"> Local Time </div>
-        <h5 class="col-1 mb-0 pb-0" id="local-time"></h3>
+        <h5 class="col-1 mb-0 pb-0" id="local-time"></h5>
     </div>
     <hr class="mt-0 pt-0"> 
     {% for obj in object_list %}
@@ -22,11 +22,11 @@
                     <div class="row">
                         <div class="col-auto">
                             <div> Next Service </div>
-                            <h3 id="service-box-{{obj.name}}">{{obj.when|date:"H:i:s"}}</h3>
+                            <h5 id="service-box-{{obj.name}}">{{obj.when|date:"H:i:s"}}</h5>
                         </div>
                         <div id="remaining-box-{{obj.name}}" style="visibility: hidden" class="col-auto" >
                             <div> Remining Time </div> 
-                            <h3>{{obj.duration|date:"H:i:s"}}</h3>
+                            <h5>{{obj.duration|date:"H:i:s"}}</h5>
                         </div>
                    </div>
                 </div>
