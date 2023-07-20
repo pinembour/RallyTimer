@@ -71,7 +71,7 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
         } else {
         remainingBox.style.visibility = 'hidden'
 
-        // If time left is less than 30 minutes
+        // If time left is more than -30 minutes
         if (diff > -30*1000*60) {
             // If time left is less than timeToRed
             if (diff <= timeToRed) {
