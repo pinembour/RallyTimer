@@ -20,10 +20,12 @@
         const serverTimezone = "{{ server_timezone }}";
         var paused = {};
         var time_to_red = {};
+        var time_to_yellow = {};
         var timer_date = {};
         var timer_duration = {};
         {% for timer in timers %}
             time_to_red["{{ timer.name }}"] = "{{ timer.time_to_red|time:"i:s" }}";
+            time_to_yellow["{{ timer.name }}"] = "{{ timer.time_to_yellow|time:"i:s" }}";
             timer_date["{{ timer.name }}"] = "{{ timer.when|date:"c" }}";
             timer_duration["{{ timer.name }}"] = "{{timer.duration|time:"H:i"}}";
           {% if timer.paused %}
@@ -58,7 +60,7 @@
             </ul>
         </div>
       </nav>
-    <div class="min-vh-100 pv-0 mv-0 bg-light">
+    <div class="min-vh-100 pv-0 mv-0 bg-light" id="background">
         <div class="container pv-0 mv-0">
             {% block content %}
             {% endblock content %}

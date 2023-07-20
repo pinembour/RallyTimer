@@ -42,6 +42,8 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
     // Convert time strings to milliseconds
     const timeToRedSplit = time_to_red[suffix].split(':')
     const timeToRed = (+timeToRedSplit[0] * 60 * 1000) + ((+timeToRedSplit[1] * 1000) || 0)
+    const timeToYellowSplit = time_to_yellow[suffix].split(':')
+    const timeToYellow = (+timeToYellowSplit[0] * 60 * 1000) + ((+timeToYellowSplit[1] * 1000) || 0)
     const timerDurationSplit = timer_duration[suffix].split(':')
     const timerDuration = (+timerDurationSplit[0] * 60 * 60 * 1000) + (+timerDurationSplit[1] * 60 * 1000) + ((+timerDurationSplit[2] * 1000) || 0)
     // Store the timer duration in hours, minutes, seconds
@@ -75,14 +77,33 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
         if (diff > -30*1000*60) {
             // If time left is less than timeToRed
             if (diff <= timeToRed) {
-                // Display the time left in red
-                countdownBox.style.color = 'red'
+                //If on the home page
+                if (location.pathname == "/") {
+                    // Change the color of the timer text to red
+                    countdownBox.style.color = 'red'
+                }
+                else {
+                    // Change the background color to red
+                    document.getElementById("background").classList.add('bg-danger')
+                }
                 countdownBox.innerHTML = hours.toString().padStart(2,'0') + ':' + minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0')
                 // If time left is less than 0
                 if ( diff <= 0 ) {
                     // Compensate for timer going in negatives
                     countdownBox.innerHTML = '-' + Math.abs(hours+1).toString().padStart(2,'0') + ':' + Math.abs(minutes+1).toString().padStart(2,'0') + ':' + Math.abs(seconds+1).toString().padStart(2,'0')
                 }
+            // If time left is less than timeToYellow
+            } else if (diff <= timeToYellow) {
+                // If on the home page
+                if (location.pathname == "/") {
+                    // Change the color of the timer text to yellow
+                    countdownBox.style.color = 'yellow'
+                }
+                else {
+                    // Change the background color to yellow
+                    document.getElementById("background").classList.add('bg-warning')
+                }
+                countdownBox.innerHTML = hours.toString().padStart(2,'0') + ':' + minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0')
             // If time left is more than timerDuration
             } else if (diff > timerDuration){
                 // Display the timer duration
@@ -92,8 +113,10 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
                 countdownBox.innerHTML = hours.toString().padStart(2,'0') + ':' + minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0')
             }
         } else {
-            // Display 'Service completed'
+            // Display 'Service completed' and change the colors back
             countdownBox.innerHTML = 'Service completed'
+            countdownBox.style.color = 'black'
+            document.getElementById("background").classList.add('bg-light')
         }
     }
     }, 1000)

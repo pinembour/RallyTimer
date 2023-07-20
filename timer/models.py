@@ -13,7 +13,8 @@ class Timer(models.Model):
     duration = models.TimeField() # Length of the timer
     when = models.DateTimeField() # When the timer will start
     flag = models.ImageField(upload_to='flag', default='white.png') # Flag to display next to the driver name
-    time_to_red = models.TimeField(default=datetime.time(00,00)) # Time to change the countdown text color to red
+    time_to_red = models.TimeField(default=datetime.time(00,00)) # Time to change the countdown to red
+    time_to_yellow = models.TimeField(default=datetime.time(00,00)) # Time to change the countdown to yellow
     def __str__(self):
         return str(self.name)
 
