@@ -96,8 +96,7 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
                 if (location.pathname == "/") {
                     // Change the color of the timer text to red
                     countdownBox.style.color = 'red'
-                }
-                else {
+                } else {
                     // Change the background color to red
                     document.getElementById("title").classList.add('text-light')
                     document.getElementById("background").classList.remove('bg-light')
