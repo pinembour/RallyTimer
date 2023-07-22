@@ -17,12 +17,19 @@
   font-size: 4rem;
 }
 
+h2 {
+  font-size: 4rem;
+}
 .ms-6 {
   margin-left: 5rem !important;
 }
 
 h3 {
-  font-size: 4rem;
+  font-size: 5rem;
+}
+
+h5 {
+  font-size: 2rem;
 }
 
 .h0 {
@@ -39,3 +46,9 @@ h3 { font-family: "HyundaiSansHead-Regular", Verdana, sans-serif; }
 @font-face { font-family: "HyundaiSansText-Regular"; src: url("priv/HyundaiSansText-Regular.eot"); src: url("priv/HyundaiSansText-Regular.eot?#iefix") format("embedded-opentype"), url("priv/HyundaiSansText-Regular.woff2") format("woff2"), url("priv/HyundaiSansText-Regular.woff") format("woff"), url("priv/HyundaiSansText-Regular.ttf") format("truetype"); font-weight: normal; font-style: normal; }
 
 body { font-family: "HyundaiSansText-Regular", Verdana, sans-serif; } 
+
+@font-face { font-family: "HyundaiSansText-MediumItalic"; src: url("priv/HyundaiSansText-MediumItalic.eot"); src: url("priv/HyundaiSansText-MediumItalic.eot?#iefix") format("embedded-opentype"), url("priv/HyundaiSansText-MediumItalic.woff2") format("woff2"), url("priv/HyundaiSansText-MediumItalic.woff") format("woff"), url("priv/HyundaiSansText-MediumItalic.ttf") format("truetype"); font-weight: normal; font-style: normal; }
+
+@font-face { font-family: "HyundaiSansText-Italic"; src: url("priv/HyundaiSansText-Italic.eot"); src: url("priv/HyundaiSansText-Italic.eot?#iefix") format("embedded-opentype"), url("priv/HyundaiSansText-Italic.woff2") format("woff2"), url("priv/HyundaiSansText-Italic.woff") format("woff"), url("priv/HyundaiSansText-Italic.ttf") format("truetype"); font-weight: normal; font-style: normal; }
+
+h2 { font-family: "HyundaiSansText-MediumItalic", Verdana, sans-serif; }

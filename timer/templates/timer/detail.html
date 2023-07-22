@@ -17,9 +17,9 @@
     </div> 
     <br>
     <div class="row">
-        <div class="col-auto text-nowrap" style="min-width: 32ch">
+        <div class="col-auto text-nowrap" style="min-width: 41ch">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body shadow">
                     <h5 class="card-title"> Next Service </h5> 
                     <h3 id="service-box-{{object.name}}"class="card-text">{{object.when|date:"H:i:s"}}</h3>
                 </div>
@@ -27,9 +27,9 @@
         </div>
         <div class="col">
         </div>
-        <div class="col-auto text-nowrap" style="min-width: 32ch">
+        <div class="col-auto text-nowrap" style="min-width: 41ch">
             <div id="remaining-box-{{object.name}}" style="visibility: hidden" class="card" >
-                <div class="card-body">
+                <div class="card-body shadow">
                     <h5 class="card-title"> Remining Time </h5> 
                     <h3 class="card-text">{{object.duration|date:"H:i:s"}}</h3>
                 </div>
@@ -37,9 +37,9 @@
         </div>
         <div class="col">
         </div>
-        <div class="col-auto text-nowrap" style="min-width: 32ch">
+        <div class="col-auto text-nowrap" style="min-width: 41ch">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body shadow">
                     <h5 class="card-title"> Local Time </h5> 
                     <h3 class="card-text" id="local-time"></h3>
                 </div>
@@ -47,7 +47,7 @@
         </div>
     </div>
     <br>
-    <div class="card text-nowrap" style="min-width: 70ch">
+    <div class="card text-nowrap shadow" style="min-width: 70ch">
         <div class="card-body pt-0 row justify-content-center">
             <div id="timeleft-{{object.name}}" style="min-width: 53%" class="col-auto h0 ps-5 mt-0">
                 <div class="spinner-border h5" role="status"></div>
