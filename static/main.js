@@ -72,6 +72,7 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
             remainingBox.style.visibility = 'visible'
         } else {
         remainingBox.style.visibility = 'hidden'
+        }
 
         // If time left is more than -30 minutes
         if (diff > -30*1000*60) {
@@ -118,6 +119,5 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
             countdownBox.style.color = 'black'
             document.getElementById("background").classList.add('bg-light')
         }
-    }
     }, 1000)
 })
