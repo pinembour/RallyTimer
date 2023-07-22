@@ -153,9 +153,9 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
             countdownBox.innerHTML = 'Service completed'
             countdownBox.style.color = 'black'
             document.getElementById("title").classList.remove('text-light')
-            document.getElementById("background").classList.remove('bg-gradient')
             document.getElementById("background").classList.remove('bg-error')
             document.getElementById("background").classList.add('bg-light')
+            document.getElementById("background").classList.remove('bg-gradient')
         }
     }, 1000)
 })
