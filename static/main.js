@@ -85,6 +85,10 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
                 }
                 else {
                     // Change the background color to red
+                    document.getElementById("title").classList.add('text-light')
+                    document.getElementById("background").classList.remove('bg-light')
+                    document.getElementById("background").classList.remove('bg-warning')
+                    document.getElementById("background").classList.add('bg-gradient')
                     document.getElementById("background").classList.add('bg-danger')
                 }
                 countdownBox.innerHTML = hours.toString().padStart(2,'0') + ':' + minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0')
@@ -102,7 +106,10 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
                 }
                 else {
                     // Change the background color to yellow
+                    document.getElementById("background").classList.remove('bg-light')
+                    document.getElementById("background").classList.remove('bg-danger')
                     document.getElementById("background").classList.add('bg-warning')
+                    document.getElementById("background").classList.add('bg-gradient')
                 }
                 countdownBox.innerHTML = hours.toString().padStart(2,'0') + ':' + minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0')
             // If time left is more than timerDuration
@@ -117,6 +124,9 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
             // Display 'Service completed' and change the colors back
             countdownBox.innerHTML = 'Service completed'
             countdownBox.style.color = 'black'
+            document.getElementById("title").classList.remove('text-light')
+            document.getElementById("background").classList.remove('bg-gradient')
+            document.getElementById("background").classList.remove('bg-error')
             document.getElementById("background").classList.add('bg-light')
         }
     }, 1000)
