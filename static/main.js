@@ -35,6 +35,15 @@ serviceBoxes.forEach(serviceBox => {
 const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
     // Get the other elements we need to update for this timer from the HTML
     const remainingBox = document.getElementById(`remaining-box-${suffix}`)
+    var untilLine
+    try {
+    untilLine = document.getElementById(`until-line-box-${suffix}`)
+    }
+    catch{
+    console.log('No until line')    
+    }
+    const untilBox = document.getElementById(`until-box-${suffix}`)
+    const untilTitle = document.getElementById(`until-title-box-${suffix}`)
     const countdownBox = document.getElementById(`timeleft-${suffix}`)
     const localtimeBox = document.getElementById(`local-time`)
     const timerDate = Date.parse(timer_date[suffix])
@@ -61,6 +70,11 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
         const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
         const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+
+        const until = timerDate - now
+        const untilHours = Math.floor((until % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+        const untilMinutes = Math.floor((until % (1000 * 60 * 60)) / (1000 * 60))
+        const untilSeconds = Math.floor((until % (1000 * 60)) / 1000)
 
         // Display the localtime according to the server timezone in the format HH:MM:SS
         var formattedTime = new Intl.DateTimeFormat('en-US', { hour: 'numeric', hour12: false, minute:'numeric', second: 'numeric', timeZone: serverTimezone }).format(now)
@@ -116,8 +130,23 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
             } else if (diff > timerDuration){
                 // Display the timer duration
                 countdownBox.innerHTML = timerDurationHours.toString().padStart(2,'0') + ':' + timerDurationMinutes.toString().padStart(2,'0') + ':' + timerDurationSeconds.toString().padStart(2,'0')
+                untilBox.style.display = 'revert'
+                untilTitle.style.display = 'revert'
+                try {
+                    untilLine.style.display = 'revert'
+                } catch {
+                    console.log('No until line')
+                }
+                untilBox.innerHTML = untilHours.toString().padStart(2,'0') + ':' + untilMinutes.toString().padStart(2,'0') + ':' + untilSeconds.toString().padStart(2,'0')
             } else {
                 // Display the time left
+                untilTitle.style.display = 'none'
+                untilBox.style.display = 'none'
+                try {
+                    untilLine.style.display = 'none'
+                } catch {
+                    console.log('No until line')
+                }
                 countdownBox.innerHTML = hours.toString().padStart(2,'0') + ':' + minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0')
             }
         } else {

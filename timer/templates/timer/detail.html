@@ -22,6 +22,9 @@
                 <div class="card-body shadow">
                     <h5 class="card-title"> Next Service </h5> 
                     <h3 id="service-box-{{object.name}}"class="card-text">{{object.when|date:"H:i:s"}}</h3>
+                    <hr id="until-line-box-{{object.name}}" style="display: none">
+                    <h5 class="card-title" id="until-title-box-{{object.name}}" style="display: none ; font-family: HyundaiSansText-Italic"> Remaining </h5> 
+                    <h2 id="until-box-{{object.name}}"class="card-text" style="display: none">00:00</h2>
                 </div>
             </div>
         </div>
