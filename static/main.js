@@ -83,9 +83,9 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
         if (paused[suffix]) {
             // Display 'Service paused'
             countdownBox.innerHTML = 'Service paused'
-            remainingBox.style.visibility = 'visible'
+            remainingBox.style.display = 'revert'
         } else {
-        remainingBox.style.visibility = 'hidden'
+        remainingBox.style.display = 'none'
         }
 
         // If time left is more than -30 minutes
@@ -150,7 +150,9 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
             }
         } else {
             // Display 'Service completed' and change the colors back
-            countdownBox.innerHTML = 'Service completed'
+            if (!paused[suffix]){
+                countdownBox.innerHTML = 'Service completed'
+            }
             countdownBox.style.color = 'black'
             document.getElementById("title").classList.remove('text-light')
             document.getElementById("background").classList.remove('bg-error')

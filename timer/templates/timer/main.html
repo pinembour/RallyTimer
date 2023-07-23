@@ -24,10 +24,10 @@
                             <h5 id="service-box-{{obj.name}}">{{obj.when|date:"H:i:s"}}</h5>
                         </div>
                         <div class="col-auto">
-                            <div id="until-title-box-{{obj.name}}" style="display: none"> Remaining </div>
+                            <div id="until-title-box-{{obj.name}}" style="display: none"> Until Next </div>
                             <h5 id="until-box-{{obj.name}}" style="display: none"></h5>
                         </div>
-                        <div id="remaining-box-{{obj.name}}" style="visibility: hidden" class="col-auto" >
+                        <div id="remaining-box-{{obj.name}}" style="display: none" class="col-auto" >
                             <div> Remining Time </div> 
                             <h5>{{obj.duration|date:"H:i:s"}}</h5>
                         </div>
