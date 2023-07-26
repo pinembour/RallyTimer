@@ -16,7 +16,9 @@ class AdminChangeConsumer(WebsocketConsumer):
             self.channel_name,
         )
     
-    async def receive(self, text_data):
+    def receive(self, text_data):
+        if text_data == "__ping__":
+            self.send(text_data="__pong__")
         try:
             message_type = int(text_data)
             # Handle the expected message types here

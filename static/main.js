@@ -1,19 +1,40 @@
 // Open a WebSocket connection to the server
 const socket = new WebSocket('ws://'+ location.host + '/ws/admin_changes/');
 
+function ping() {
+        socket.send('__ping__');
+        tm = setTimeout(function () {
+            location.reload();
+    }, 5000);
+}
+
+function pong() {
+    clearTimeout(tm);
+}
+socket.onopen = function () {
+    setInterval(ping, 30000);
+}
+
 // Websocket event handlers
 socket.onmessage = function (event) {
     // Handle socket messages here
+    var msg = event.data;
+    if (msg == '__pong__') {
+        pong();
+        return;
+    }
     console.log('Recieved message: ' + event.data);
     location.reload();
 };
 socket.onclose = function(event) {
     // Handle socket closure here
     console.log('Socket closed with code: ' + event.code);
+    location.reload();
 };
 socket.onerror = function(error) {
     // Handle any errors here
     console.error('Socket error: ' + error);
+    location.reload();
 };
 
 const getTimezoneOffset = (timeZone, date = new Date()) => {
