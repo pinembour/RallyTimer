@@ -116,7 +116,8 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
                 //If on the home page
                 if (location.pathname == "/") {
                     // Change the color of the timer text to red
-                    countdownBox.style.color = 'red'
+                    countdownBox.classList.remove('text-warning')
+                    countdownBox.classList.add('text-danger')
                 } else {
                     // Change the background color to red
                     document.getElementById("title").classList.add('text-light')
@@ -136,7 +137,7 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
                 // If on the home page
                 if (location.pathname == "/") {
                     // Change the color of the timer text to yellow
-                    countdownBox.style.color = 'yellow'
+                    countdownBox.classList.add('text-warning')
                 }
                 else {
                     // Change the background color to yellow
@@ -174,7 +175,8 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
             if (!paused[suffix]){
                 countdownBox.innerHTML = 'Service completed'
             }
-            countdownBox.style.color = 'black'
+            countdownBox.classList.remove('text-warning')
+            countdownBox.classList.remove('text-danger')
             document.getElementById("title").classList.remove('text-light')
             document.getElementById("background").classList.remove('bg-error')
             document.getElementById("background").classList.add('bg-light')
