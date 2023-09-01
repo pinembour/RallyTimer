@@ -3,9 +3,26 @@ from datetime import timedelta
 from django.contrib import admin, messages
 from django_object_actions import DjangoObjectActions, takes_instance_or_queryset
 from .models import Timer
+from .forms import TimerLogisticsForm, TimerSystemForm
 # Register your models here.
 
 class TimerAdmin(DjangoObjectActions, admin.ModelAdmin):
+    def get_form(self, request, obj=None, **kwargs):
+        if request.user.groups.filter(name='Logistics').exists():
+            kwargs['form'] = TimerLogisticsForm
+        if request.user.groups.filter(name='System Engineer').exists():
+            kwargs['form'] = TimerSystemForm
+
+        return super().get_form(request, obj, **kwargs)
+
+    def save_model(self, request, obj, form, change):
+        if request.user.groups.filter(name='System Engineer').exists():
+            obj.save_system()
+        else:
+            obj.save()
+        
+
+            
     #Add pause button to each timer. Pause button will change the duration to the time remaining and set the timer start time to 1 day ago.
     @takes_instance_or_queryset
     def pause(self, request, queryset):

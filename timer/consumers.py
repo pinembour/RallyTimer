@@ -1,5 +1,6 @@
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
+import json
 
 class AdminChangeConsumer(WebsocketConsumer):
     def connect(self):
@@ -29,4 +30,6 @@ class AdminChangeConsumer(WebsocketConsumer):
     
     def admin_change_notification(self, event):
         message = event['message']
-        self.send(text_data=message)
+        name=event['name']
+        print(json.dumps(event))
+        self.send(text_data=json.dumps(event))

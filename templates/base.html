@@ -23,6 +23,7 @@
         var time_to_yellow = {};
         var timer_date = {};
         var timer_duration = {};
+        var timer_disconnect = {};
         {% for timer in timers %}
             time_to_red["{{ timer.name }}"] = "{{ timer.time_to_red|time:"i:s" }}";
             time_to_yellow["{{ timer.name }}"] = "{{ timer.time_to_yellow|time:"i:s" }}";
@@ -32,6 +33,11 @@
             paused["{{ timer.name }}"] = true;
           {% else %}
             paused["{{ timer.name }}"] = false;
+          {% endif %}
+          {% if timer.can_disconnect %}
+            timer_disconnect["{{ timer.name }}"] = true;
+          {% else %}
+            timer_disconnect["{{ timer.name }}"] = false;
           {% endif %}
         {% endfor %}
     </script>

@@ -1,6 +1,7 @@
 // Open a WebSocket connection to the server
 const socket = new WebSocket('ws://'+ location.host + '/ws/admin_changes/');
 
+var data = {name: 'null', message: 'null'}
 function ping() {
         socket.send('__ping__');
         tm = setTimeout(function () {
@@ -23,8 +24,12 @@ socket.onmessage = function (event) {
         pong();
         return;
     }
-    console.log('Recieved message: ' + event.data);
-    location.reload();
+    try {data = JSON.parse(msg)}
+    catch {data = {name: 'noJSON', message: 'noJSON'}}
+    console.log('Recieved message: ' + data.message);
+    if (data.message == 'reload') {
+        location.reload();
+    }
 };
 socket.onclose = function(event) {
     // Handle socket closure here
@@ -56,6 +61,7 @@ serviceBoxes.forEach(serviceBox => {
 const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
     // Get the other elements we need to update for this timer from the HTML
     const remainingBox = document.getElementById(`remaining-box-${suffix}`)
+    const disconnectBox = document.getElementById(`disconnect-box-${suffix}`)
     var untilLine
     try {
     untilLine = document.getElementById(`until-line-box-${suffix}`)
@@ -103,10 +109,20 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
 
         if (paused[suffix]) {
             // Display 'Service paused'
+            disconnectBox.style.display = 'none'
             countdownBox.innerHTML = 'Service paused'
             remainingBox.style.display = 'revert'
         } else {
-        remainingBox.style.display = 'none'
+            remainingBox.style.display = 'none'
+            disconnectBox.style.display = 'revert'
+        }
+        if (data.name == suffix) {
+            timer_disconnect[suffix] = (data.message.toLowerCase() === 'true')
+        }
+        if (timer_disconnect[suffix]) {
+            document.getElementById("disconnectId").src = "/static/canDisconnect.svg";
+        } else {
+            document.getElementById("disconnectId").src = "/static/cannotDisconnect.svg";
         }
 
         // If time left is more than -30 minutes
