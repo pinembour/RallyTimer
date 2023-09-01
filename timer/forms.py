@@ -1,6 +1,8 @@
 from django.forms import ModelForm
-from .models import Timer
-
+from django import forms
+from .models import Timer, ServerTimezone
+from django.utils import timezone
+import pytz
 class TimerLogisticsForm(ModelForm):
     class Meta:
             model = Timer
@@ -14,3 +16,11 @@ class TimerSystemForm(ModelForm):
         super(TimerSystemForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['readonly'] = True
         self.fields['full_name'].widget.attrs['readonly'] = True
+
+class ServerTimezoneForm(ModelForm):
+    class Meta:
+        model = ServerTimezone
+        fields = ['timezone']
+        widgets = {
+            'timezone': forms.Select(choices=[(tz, tz) for tz in pytz.common_timezones]),
+        }

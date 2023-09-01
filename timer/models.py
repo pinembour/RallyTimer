@@ -3,7 +3,7 @@ from django.urls import reverse
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 import datetime
-
+import tzlocal
 # Create your models here.
 
 class Timer(models.Model):
@@ -63,3 +63,6 @@ class Timer(models.Model):
                 "message": "reload",
             },
         )
+
+class ServerTimezone(models.Model):
+    timezone = models.CharField(max_length=63, default=tzlocal.get_localzone_name())

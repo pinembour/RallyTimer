@@ -2,8 +2,8 @@ import datetime
 from datetime import timedelta
 from django.contrib import admin, messages
 from django_object_actions import DjangoObjectActions, takes_instance_or_queryset
-from .models import Timer
-from .forms import TimerLogisticsForm, TimerSystemForm
+from .models import Timer, ServerTimezone
+from .forms import TimerLogisticsForm, TimerSystemForm, ServerTimezoneForm
 # Register your models here.
 
 class TimerAdmin(DjangoObjectActions, admin.ModelAdmin):
@@ -45,4 +45,8 @@ class TimerAdmin(DjangoObjectActions, admin.ModelAdmin):
             obj.save_paused()
     change_actions = ('pause',)
 
+class ServerTimezoneAdmin(admin.ModelAdmin):
+    form = ServerTimezoneForm
+
 admin.site.register(Timer, TimerAdmin)
+admin.site.register(ServerTimezone, ServerTimezoneAdmin)
