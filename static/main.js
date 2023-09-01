@@ -109,20 +109,28 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
 
         if (paused[suffix]) {
             // Display 'Service paused'
-            disconnectBox.style.display = 'none'
+            try {disconnectBox.style.display = 'none'}
+            catch {//In base view there is no disconnect box
+            }
             countdownBox.innerHTML = 'Service paused'
             remainingBox.style.display = 'revert'
         } else {
             remainingBox.style.display = 'none'
-            disconnectBox.style.display = 'revert'
+            try {disconnectBox.style.display = 'revert'}
+            catch {//In base view there is no disconnect box
+            }
         }
         if (data.name == suffix) {
             timer_disconnect[suffix] = (data.message.toLowerCase() === 'true')
         }
         if (timer_disconnect[suffix]) {
-            document.getElementById("disconnectId").src = "/static/canDisconnect.svg";
+            try {document.getElementById("disconnectId").src = "/static/canDisconnect.svg";}
+            catch {//In base view there is no disconnect box
+            }
         } else {
-            document.getElementById("disconnectId").src = "/static/cannotDisconnect.svg";
+            try{document.getElementById("disconnectId").src = "/static/cannotDisconnect.svg";}
+            catch {//In base view there is no disconnect box
+            }
         }
 
         // If time left is more than -30 minutes
@@ -193,10 +201,14 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
             }
             countdownBox.classList.remove('text-warning')
             countdownBox.classList.remove('text-danger')
+            try{
             document.getElementById("title").classList.remove('text-light')
             document.getElementById("background").classList.remove('bg-error')
             document.getElementById("background").classList.add('bg-light')
             document.getElementById("background").classList.remove('bg-gradient')
+            }
+            catch{//In base view there is no disconnect box
+            }
         }
     }, 1000)
 })
