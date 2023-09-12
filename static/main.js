@@ -124,14 +124,10 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
             timer_disconnect[suffix] = (data.message.toLowerCase() === 'true')
         }
         if (timer_disconnect[suffix]) {
-            try {document.getElementById("disconnectId").src = "/static/canDisconnect.svg";}
-            catch {//In base view there is no disconnect box
-            }
+            document.getElementById(`disconnectId-${suffix}`).src = "/static/canDisconnect.svg"
         } else {
-            try{document.getElementById("disconnectId").src = "/static/cannotDisconnect.svg";}
-            catch {//In base view there is no disconnect box
-            }
-        }
+            document.getElementById(`disconnectId-${suffix}`).src = "/static/cannotDisconnect.svg"
+        }       
 
         // If time left is more than -30 minutes
         if (diff > -30*1000*60) {
@@ -178,9 +174,11 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
                 untilBox.style.display = 'revert'
                 untilTitle.style.display = 'revert'
                 try {
+                    //Detailed view only
                     untilLine.style.display = 'revert'
                 } catch {
-                    console.log('No until line')
+                    //Base view only
+                    disconnectBox.style.display = 'none'
                 }
                 untilBox.innerHTML = untilHours.toString().padStart(2,'0') + ':' + untilMinutes.toString().padStart(2,'0') + ':' + untilSeconds.toString().padStart(2,'0')
             } else {
@@ -188,9 +186,13 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
                 untilTitle.style.display = 'none'
                 untilBox.style.display = 'none'
                 try {
+                    //Detailed view only
                     untilLine.style.display = 'none'
                 } catch {
-                    console.log('No until line')
+                    //Base view only
+                    if (!paused[suffix]){
+                        disconnectBox.style.display = 'revert'
+                    }
                 }
                 countdownBox.innerHTML = hours.toString().padStart(2,'0') + ':' + minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0')
             }

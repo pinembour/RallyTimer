@@ -27,6 +27,11 @@
                             <div id="until-title-box-{{obj.name}}" style="display: none"> Until Next </div>
                             <h5 id="until-box-{{obj.name}}" style="display: none"></h5>
                         </div>
+                        <div class="col-auto">
+                            <div id="disconnect-box-{{obj.name}}" style="display: none">
+                                <img id="disconnectId-{{obj.name}}" src="{% static 'cannotDisconnect.svg' %}" height="60"/>
+                            </div>
+                        </div>
                         <div id="remaining-box-{{obj.name}}" style="display: none" class="col-auto" >
                             <div> Remining Time </div> 
                             <h5>{{obj.duration|date:"H:i:s"}}</h5>
