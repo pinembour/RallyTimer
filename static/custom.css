@@ -35,7 +35,8 @@ h5 {
 .h0 {
   font-size: 8rem;
 }
-@font-face { font-family: "HyundaiSansHead-Regular"; src: url("priv/HyundaiSansHead-Regular.eot"); src: url("priv/HyundaiSansHead-Regular.eot?#iefix") format("embedded-opentype"), url("priv/HyundaiSansHead-Regular.woff2") format("woff2"), url("priv/HyundaiSansHead-Regular.woff") format("woff"), url("priv/HyundaiSansHead-Regular.ttf") format("truetype"); font-weight: normal; font-style: normal; }
+@font-face { font-family: "HyundaiSansHead-Regular"; src: url("priv/HyundaiSansHead-Regular.eot"); src: url("priv/HyundaiSansHead-Regular.eot?#iefix") format("embedded-opentype"), url("priv/HyundaiSansHead-Regular.woff2") format("woff2"), url("priv/HyundaiSansHead-Regular.woff") format("woff"), url("priv/HyundaiSansHead-Regular.ttf") format("truetype"); font-weight: normal; font-style: normal; unicode-range: U+0-2F, U+003B-10FFF;}
+@font-face { font-family: "HyundaiSansHead-Regular"; src: url("priv/DroidSansMono.ttf") format("truetype"); font-weight: normal; font-style: normal; unicode-range: U+0030-0039, U+003A;}
 
 h1 { font-family: "HyundaiSansHead-Regular", Verdana, sans-serif; font-size: xx-large;} 
 
@@ -43,7 +44,8 @@ h1 { font-family: "HyundaiSansHead-Regular", Verdana, sans-serif; font-size: xx-
 
 h3 { font-family: "HyundaiSansHead-Regular", Verdana, sans-serif; }
 
-@font-face { font-family: "HyundaiSansText-Regular"; src: url("priv/HyundaiSansText-Regular.eot"); src: url("priv/HyundaiSansText-Regular.eot?#iefix") format("embedded-opentype"), url("priv/HyundaiSansText-Regular.woff2") format("woff2"), url("priv/HyundaiSansText-Regular.woff") format("woff"), url("priv/HyundaiSansText-Regular.ttf") format("truetype"); font-weight: normal; font-style: normal; }
+@font-face { font-family: "HyundaiSansText-Regular"; src: url("priv/HyundaiSansText-Regular.eot"); src: url("priv/HyundaiSansText-Regular.eot?#iefix") format("embedded-opentype"), url("priv/HyundaiSansText-Regular.woff2") format("woff2"), url("priv/HyundaiSansText-Regular.woff") format("woff"), url("priv/HyundaiSansText-Regular.ttf") format("truetype"); font-weight: normal; font-style: normal; unicode-range: U+0-2F, U+003B-10FFF;}
+@font-face { font-family: "HyundaiSansText-Regular"; src: url("priv/DroidSansMono.ttf") format("truetype"); font-weight: normal; font-style: normal; unicode-range: U+0030-0039, U+003A;}
 
 body { font-family: "HyundaiSansText-Regular", Verdana, sans-serif; } 
 
