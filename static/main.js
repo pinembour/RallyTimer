@@ -61,6 +61,8 @@ serviceBoxes.forEach(serviceBox => {
 const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
     // Get the other elements we need to update for this timer from the HTML
     const remainingBox = document.getElementById(`remaining-box-${suffix}`)
+    const remainingTitle = document.getElementById(`remaining-title-${suffix}`)
+    const remainingText = document.getElementById(`remaining-text-${suffix}`)
     const disconnectBox = document.getElementById(`disconnect-box-${suffix}`)
     var untilLine
     try {
@@ -111,6 +113,12 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
             // Display 'Service paused'
             disconnectBox.style.display = 'none'
             countdownBox.innerHTML = 'Service paused'
+            remainingBox.style.display = 'revert'
+        } else if (is_tfz[suffix]) {
+            // Display 'TFZ'
+            disconnectBox.style.display = 'none'
+            remainingTitle.innerHTML = ''
+            remainingText.innerHTML = 'Tire Fitting Zone'
             remainingBox.style.display = 'revert'
         } else {
             remainingBox.style.display = 'none'
@@ -191,7 +199,11 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
         } else {
             // Display 'Service completed' and change the colors back
             if (!paused[suffix]){
-                countdownBox.innerHTML = 'Service completed'
+                if (is_tfz[suffix]) {
+                    countdownBox.innerHTML = 'TFZ completed'
+                } else {
+                    countdownBox.innerHTML = 'Service completed'
+                }
             }
             countdownBox.classList.remove('text-warning')
             countdownBox.classList.remove('text-danger')

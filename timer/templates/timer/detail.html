@@ -31,8 +31,8 @@
         <div class="col">
             <div id="remaining-box-{{object.name}}" style="display: none" class="card" >
                 <div class="card-body shadow">
-                    <h5 class="card-title"> Remaining Time </h5> 
-                    <h3 class="card-text">{{object.duration|date:"H:i:s"}}</h3>
+                    <h5 id="remaining-title-{{object.name}}" class="card-title"> Remaining Time </h5> 
+                    <h3 id="remaining-text-{{object.name}}" class="card-text">{{object.duration|date:"H:i:s"}}</h3>
                 </div>
             </div>
             <div id="disconnect-box-{{object.name}}" style="display: none" class="card" >

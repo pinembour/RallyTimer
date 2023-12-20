@@ -16,6 +16,7 @@ class Timer(models.Model):
     time_to_yellow = models.TimeField(default=datetime.time(00,00)) # Time to change the countdown to yellow
     time_to_red = models.TimeField(default=datetime.time(00,00)) # Time to change the countdown to red
     can_disconnect = models.BooleanField(default=False) # Whether the car can be disconnected from the network
+    is_tfz = models.BooleanField(default=False) # Whether the next service is a TFZ
     def __str__(self):
         return str(self.name)
 

@@ -24,6 +24,7 @@
         var timer_date = {};
         var timer_duration = {};
         var timer_disconnect = {};
+        var is_tfz = {};
         {% for timer in timers %}
             time_to_red["{{ timer.name }}"] = "{{ timer.time_to_red|time:"i:s" }}";
             time_to_yellow["{{ timer.name }}"] = "{{ timer.time_to_yellow|time:"i:s" }}";
@@ -38,6 +39,11 @@
             timer_disconnect["{{ timer.name }}"] = true;
           {% else %}
             timer_disconnect["{{ timer.name }}"] = false;
+          {% endif %}
+          {% if timer.is_tfz %}
+            is_tfz["{{ timer.name }}"] = true;
+          {% else %}
+            is_tfz["{{ timer.name }}"] = false;
           {% endif %}
         {% endfor %}
     </script>
