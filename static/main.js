@@ -109,16 +109,12 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
 
         if (paused[suffix]) {
             // Display 'Service paused'
-            try {disconnectBox.style.display = 'none'}
-            catch {//In base view there is no disconnect box
-            }
+            disconnectBox.style.display = 'none'
             countdownBox.innerHTML = 'Service paused'
             remainingBox.style.display = 'revert'
         } else {
             remainingBox.style.display = 'none'
-            try {disconnectBox.style.display = 'revert'}
-            catch {//In base view there is no disconnect box
-            }
+            disconnectBox.style.display = 'revert'
         }
         if (data.name == suffix) {
             timer_disconnect[suffix] = (data.message.toLowerCase() === 'true')
@@ -189,10 +185,6 @@ const suffix = serviceBox.id.split('-')[2] // Extract the suffix from the ID
                     //Detailed view only
                     untilLine.style.display = 'none'
                 } catch {
-                    //Base view only
-                    if (!paused[suffix]){
-                        disconnectBox.style.display = 'revert'
-                    }
                 }
                 countdownBox.innerHTML = hours.toString().padStart(2,'0') + ':' + minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0')
             }
