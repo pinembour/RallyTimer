@@ -24,13 +24,13 @@
                     <h3 id="service-box-{{object.name}}"class="card-text">{{object.when|date:"H:i:s"}}</h3>
                     <hr id="until-line-box-{{object.name}}" style="display: none">
                     <h5 class="card-title" id="until-title-box-{{object.name}}" style="display: none ; font-family: HyundaiSansText-Italic"> Until Next </h5> 
-                    <h2 id="until-box-{{object.name}}"class="card-text" style="display: none">00:00</h2>
+                        <h2 id="until-box-{{object.name}}"class="card-text" style="display: none">00:00</h2>
                 </div>
             </div>
         </div>
         <div class="col">
             <div id="remaining-box-{{object.name}}" style="display: none" class="card" >
-                <div class="card-body shadow">
+                <div class="card-body text-center shadow">
                     <h5 id="remaining-title-{{object.name}}" class="card-title"> Remaining Time </h5> 
                     <h3 id="remaining-text-{{object.name}}" class="card-text">{{object.duration|date:"H:i:s"}}</h3>
                 </div>
